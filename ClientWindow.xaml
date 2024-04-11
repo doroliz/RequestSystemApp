@@ -1,0 +1,43 @@
+﻿<Window x:Class="TechnoServiceApp.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechnoServiceApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Учёт заявок Техносервис - Клиент" Height="800" Width="800">
+    <Grid Background="AliceBlue">
+        <StackPanel Background="LightBlue" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="800">
+            <Label Content="Клиент" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </StackPanel>
+        <Label Content="Выберите технику, требующую ремонта:*" HorizontalAlignment="Left" Margin="31,462,0,0" VerticalAlignment="Top"/>
+        <Label Content="Выберите тип неисправности:*" HorizontalAlignment="Left" Margin="29,507,0,0" VerticalAlignment="Top"/>
+        <Label Content="Цена ремонта:" HorizontalAlignment="Left" Margin="31,557,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="technicBox" SelectedItem="{Binding technic}" DisplayMemberPath="name" HorizontalAlignment="Left" Margin="336,462,0,0" VerticalAlignment="Top" Width="200"/>
+        <ComboBox x:Name="problemBox" SelectedItem="{Binding problem}" DisplayMemberPath="name"  HorizontalAlignment="Left" Margin="259,507,0,0" VerticalAlignment="Top" Width="491"/>
+        <TextBox IsReadOnly="True" x:Name="priceBox" HorizontalAlignment="Left" Height="23" Margin="147,562,0,0" TextWrapping="Wrap" Text="{Binding problem.min_price}" VerticalAlignment="Top" Width="220"/>
+        <Button x:Name="enterBtn" Click="enterBtn_Click" Content="Подать заявку" HorizontalAlignment="Left" Margin="550,555,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button BorderBrush="LightBlue" Background="{x:Null}" BorderThickness="2" ClipToBounds="True"
+                x:Name="backBtn" Click="backBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="20,720,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Ваши заявки" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="352,60,311,0" Width="129"/>
+        <DataGrid x:Name="requestTable" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Height="272" Margin="31,100,0,0" VerticalAlignment="Top" Width="721">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding id}" Width="30"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding status.name}" Width="70"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding technic.name}" Width="100"/>
+                <DataGridTextColumn Header="Неисправность" Binding="{Binding problem.name}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date, StringFormat=d}" Width="50"/>
+                <DataGridTextColumn Header="Дни" Binding="{Binding days}" Width="40"/>
+                <DataGridTextColumn Header="Комментарий" Binding="{Binding comment}" Width="300"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="31,377,0,0" TextWrapping="Wrap" Text="Введите номер заявки..." VerticalAlignment="Top" Width="300"/>
+        <Button x:Name="searchBtn" Click="searchBtn_Click" Content="Поиск" HorizontalAlignment="Left" Margin="336,373,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Заполните поля, чтобы подать новую заявку:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="239,421,181,0" Width="372"/>
+        <Button x:Name="updateBtn" Click="updateBtn_Click" Content="Обновить" HorizontalAlignment="Left" Margin="660,373,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label Visibility="Hidden" x:Name="linkLabel" Content="Чтобы оценить качество обслуживания ООО Техносервис, просим пройти опрос по ссылке:" HorizontalAlignment="Left" Margin="31,624,0,0" VerticalAlignment="Top"/>
+        <TextBox Visibility="Hidden" Background="AliceBlue" IsReadOnly="True" x:Name="linkBox" HorizontalAlignment="Left" Height="23" Margin="31,664,0,0" TextWrapping="Wrap" Text="https://www.google.ru/forms/technoservicequality" VerticalAlignment="Top" Width="650"/>
+
+    </Grid>
+</Window>

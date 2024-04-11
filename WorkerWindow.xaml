@@ -1,0 +1,57 @@
+﻿<Window x:Class="TechnoServiceApp.WorkerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechnoServiceApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Учёт заявок Техносервис - Сотрудник" Height="800" Width="800">
+    <Grid Background="AliceBlue">
+        <StackPanel Background="LightBlue" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="800">
+            <Label Content="Сотрудник" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </StackPanel>
+        <Label Content="Регистрация заявок" HorizontalAlignment="Left" Margin="321,60,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="registerBtn" Click="registerBtn_Click"  Content="Зарегистрировать" HorizontalAlignment="Left" Margin="557,296,0,0" VerticalAlignment="Top" Width="200"/>
+
+
+        <Button BorderBrush="LightBlue" Background="{x:Null}" BorderThickness="2" ClipToBounds="True" 
+                x:Name="backBtn" Click="backBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="20,720,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="requestTable" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Height="200" Margin="36,91,0,0" VerticalAlignment="Top" Width="721">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding id}" Width="30"/>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding client_id}" Width="50"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding status.name}" Width="70"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding technic.name}" Width="100"/>
+                <DataGridTextColumn Header="Неисправность" Binding="{Binding problem.name}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date, StringFormat=d}" Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Фильтры:" HorizontalAlignment="Left" Margin="358,311,0,0" VerticalAlignment="Top"/>
+        <Label Content="Статус:" HorizontalAlignment="Left" Margin="357,351,0,0" VerticalAlignment="Top"/>
+        <Label Content="Оборудование:" HorizontalAlignment="Left" Margin="19,386,0,0" VerticalAlignment="Top"/>
+        <Label Content="Неисправность:" HorizontalAlignment="Left" Margin="16,351,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="statusCombo" SelectedItem="{Binding status}" DisplayMemberPath="name" HorizontalAlignment="Left" Margin="419,351,0,0" VerticalAlignment="Top" Width="200"/>
+        <ComboBox x:Name="technicCombo" SelectedItem="{Binding technic}" DisplayMemberPath="name" HorizontalAlignment="Left" Margin="140,386,0,0" VerticalAlignment="Top" Width="200"/>
+        <ComboBox x:Name="problemCombo" SelectedItem="{Binding problem}" DisplayMemberPath="name" HorizontalAlignment="Left" Margin="140,351,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="filterBtn" Click="filterBtn_Click" Content="Поиск" HorizontalAlignment="Left" Margin="682,386,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <DataGrid x:Name="activeRequestTable" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Height="173" Margin="36,472,0,0" VerticalAlignment="Top" Width="721">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding id}" Width="30"/>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding client_id}" Width="50"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding technic.name}" Width="100"/>
+                <DataGridTextColumn Header="Неисправность" Binding="{Binding problem.name}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date, StringFormat=d}" Width="70"/>
+                <DataGridTextColumn Header="Комментарий" Binding="{Binding comment}" Width="300"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Исполняемые заявки" HorizontalAlignment="Left" Margin="310,432,0,0" VerticalAlignment="Top"/>
+        <TextBox MaxLength="200" x:Name="commentBox" Text="Заявка успешно выполнена..." HorizontalAlignment="Left" Height="50" Margin="36,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
+        <Button x:Name="addCommentBtn" Click="addCommentBtn_Click"  Content="Добавить комментарий" HorizontalAlignment="Left" Margin="557,670,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="endBtn" Click="endBtn_Click"  Content="Выполнить заявку" HorizontalAlignment="Left" Margin="557,720,0,0" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="358,390,0,0" TextWrapping="Wrap" Text="Введите номер заявки..." VerticalAlignment="Top" Width="300"/>
+        <Button x:Name="updateBtn" Click="updateBtn_Click"  Content="Обновить" HorizontalAlignment="Left" Margin="36,296,0,0" VerticalAlignment="Top" Width="99"/>
+
+    </Grid>
+</Window>

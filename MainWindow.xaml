@@ -1,0 +1,34 @@
+﻿<Window x:Class="TechnoServiceApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechnoServiceApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Учёт заявок Техносервис - Авторизация" Height="450" Width="800">
+    <Grid Background="AliceBlue">
+        <StackPanel Background="LightBlue" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="800">
+            <Label Content="Авторизация" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </StackPanel>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Label Content="Логин" Margin="258,98,462,287"/>
+            <Label Content="Пароль" Margin="258,156,462,229"/>
+            <TextBox MaxLength="50" x:Name="loginBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="336,96,0,0" Height="38"/>
+            <PasswordBox MaxLength="50" x:Name="passBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="336,156,0,0" Height="36"/>
+            <Button x:Name="enterBtn" Click="enterBtn_Click"  Content="Войти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="462,224,0,0" Height="36"/>
+            <Button x:Name="regBtn" Click="regBtn_Click"  Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="258,224,0,0" Height="38" BorderBrush="LightBlue" Background="{x:Null}" BorderThickness="2" ClipToBounds="True"/>
+        </Grid>
+        <TextBox x:Name="adminBox" HorizontalAlignment="Left" Height="23" Margin="40,313,0,0" TextWrapping="Wrap" Text="1251" VerticalAlignment="Top" Width="224"/>
+        <Button x:Name="okBtn" Click="okBtn_Click" Content="ОК" HorizontalAlignment="Left" Margin="269,309,0,0" VerticalAlignment="Top" Width="40"/>
+
+        <Grid x:Name="adminGrid" Margin="39,354,171,10" Visibility="Hidden">
+            <Label x:Name="checkLabel" Content="Проверка работы программы:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="checkClientBtn" Click="checkClientBtn_Click" Content="Клиент" HorizontalAlignment="Left" Margin="225,0,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="checkWorkerBtn" Click="checkWorkerBtn_Click" Content="Сотрудник" HorizontalAlignment="Left" Margin="305,0,0,0" VerticalAlignment="Top" Width="107"/>
+            <Button x:Name="checkManagerBtn" Click="checkManagerBtn_Click" Content="Менеджер" HorizontalAlignment="Left" Margin="417,0,0,0" VerticalAlignment="Top" Width="107"/>
+
+        </Grid>
+
+    </Grid>
+</Window>
